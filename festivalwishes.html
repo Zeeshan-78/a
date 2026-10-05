@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script type="text/javascript" src="https://wybiral.github.io/code-art/projects/tiny-mirror/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://wybiral.github.io/code-art/projects/tiny-mirror/index.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link hr
+    <title>نور الاسلام - Islamic Knowledge Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #1a472a;
+            --color-secondary: #c9a961;
+            --color-accent: #2d5a3d;
+            --color-dark: #0f2818;
+            --color-light: #f5f1e8;
+            --color-text: #2c3e50;
+            --color-border: #d4cfc3;
+            --safe-area-inset-top: env(safe-area-inset-top, 0px);
+            --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --color-primary: #2d5a3d;
+                --color-dark: #f5f1e8;
+                --color-light: #0f2818;
+                --color-text: #d4cfc3;
+                --color-border: #1a472a;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--safe-area-inset-top) + 80px);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--color-light);
+            color: var(--color-text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Islamic Pattern Background */
+        .islamic-pattern {
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(201, 169, 97, 0.03) 35px, rgba(201, 169, 97, 0.03) 70px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(201, 169, 97, 0.03) 35px, rgba(201, 169, 97, 0.03) 70px);
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--color-primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem 2rem;
+            padding-top: calc(1.5rem + var(--safe-area-inset-top));
+            color: white;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+            letter-spacing: 1px;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-secondary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-secondary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+            padding-top: calc(2rem + var(--safe-area-inset-top));
+            padding-bottom: calc(2rem + var(--safe-area-inset-bottom));
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(201, 169, 97, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(201, 169, 97, 0.05) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="stars" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(201,169,97,0.3)"/></pattern></defs><rect width="200" height="200" fill="url(%23stars)"/></svg>');
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: white;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        button, .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            min-width: 150px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--color-secondary);
+            color: var(--color-primary);
+            box-shadow: 0 8px 25px rgba(201, 169, 97, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(201, 169, 97, 0.4);
+            background: #d4b878;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--color-secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-secondary);
+            color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 4px;
+            border: 1px solid rgba(201, 169, 97, 0.3);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--color-secondary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.5rem;
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            padding-bottom: calc(4rem + var(--safe-area-inset-bottom));
+        }
+
+        section.islamic-pattern {
+            background: var(--color-light);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--color-secondary);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--color-secondary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(26, 71, 42, 0.15);
+            border-color: var(--color-secondary);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--color-text);
+            opacity: 0.8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Teachings Section */
+        .teachings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .teaching-card {
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--color-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .teaching-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(26, 71, 42, 0.25);
+        }
+
+        .teaching-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .teaching-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            padding: 2rem;
+            background: white;
+            border-radius: 4px;
+            border-left: 4px solid var(--color-secondary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(26, 71, 42, 0.15);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .author-info h4 {
+            font-size: 0.95rem;
+            color: var(--color-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.8rem;
+            color: var(--color-text);
+            opacity: 0.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+            color: white;
+            text-align: center;
+            border-radius: 4px;
+            padding: 4rem 2rem;
+            margin: 2rem;
+            box-shadow: 0 15px 50px rgba(26, 71, 42, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(201, 169, 97, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(201, 169, 97, 0.05) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .cta-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section h2::after {
+            background: var(--color-secondary);
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: white;
+            padding: 3rem 2rem;
+            padding-bottom: calc(3rem + var(--safe-area-inset-bottom));
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .footer-section a {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 0.7rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                margin-bottom: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            button, .btn {
+                width: 100%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero::after {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div>
+                <div class="logo">نور الاسلام</div>
+                <div class="logo-subtitle">Islamic Knowledge Portal</div>
+            </div>
+            <nav>
+                <a href="#about">تعارف</a>
+                <a href="#teachings">تعليمات</a>
+                <a href="#testimonials">آراء</a>
+                <a href="#festival-wishes">تہوار کی تمنائیں</a>
+                <a href="#cta">رابطہ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>اسلام کی روشنی میں زندگی</h1>
+            <p class="subtitle">قرآن، حدیث اور اسلامی علم کے ذریعے اپنے ایمان کو مضبوط کریں۔ ہمارے ساتھ اسلامی تعليم کا سفر شروع کریں۔</p>
+            
+            <div class="cta-buttons">
+                <button class="btn btn-primary">شروع کریں</button>
+                <button class="btn btn-secondary">مزید جانیں</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">10K+</span>
+                    <span class="stat-label">مختلف سبق</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50K+</span>
+                    <span class="stat-label">طلباء</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">اسلامی شاخیں</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">دستیاب</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section id="about" class="islamic-pattern">
+        <h2>ہماری خدمات</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">ق</div>
+                <h3>قرآن مجید</h3>
+                <p>قرآن شریف کی تفسیر اور تعليم۔ ہر سورہ کی تفصیلی وضاحت اور علمی مطالعہ۔</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">ح</div>
+                <h3>احادیث شریف</h3>
+                <p>نبی کریم صلی اللہ علیہ وسلم کی احادیث اور ان کی تشریحات قابل فہم انداز میں۔</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">ش</div>
+                <h3>شریعت</h3>
+                <p>اسلامی قانون اور شریعت کی بنیادی معلومات اور روزمرہ کے حکام۔</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">ع</div>
+                <h3>عقیدہ</h3>
+                <p>اسلامی عقیدہ کے اہم نکات اور ایمان کے بنیادی اصول۔</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">ا</div>
+                <h3>اخلاقیات</h3>
+                <p>اسلام میں اخلاق اور حسن سلوک کی تعليم۔ بہتر انسان بننے کا راستہ۔</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">د</div>
+                <h3>دعوہ و تربیت</h3>
+                <p>اسلام کی دعوت اور روحانی تربیت کے طریقے اور اہمیت۔</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Hadith Section -->
+    <section id="daily-hadith" class="islamic-pattern">
+        <h2>آج کی حدیث</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="teaching-card" style="background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%); border: 2px solid #c9a961;">
+                <div id="hadith-container" style="text-align: center; padding: 2rem; min-height: 200px; display: flex; flex-direction: column; justify-content: center;">
+                    <h4 id="hadith-title" style="margin-bottom: 1.5rem; font-size: 1.1rem;">حدیث شریف</h4>
+                    <p id="hadith-text" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; color: white;"></p>
+                    <p id="hadith-source" style="font-size: 0.9rem; color: #c9a961; opacity: 0.9;"></p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 1rem; color: #666; font-size: 0.9rem;">صفحہ refresh کریں یا کل دوبارہ آئیں نئی حدیث کے لیے</p>
+        </div>
+    </section>
+
+    <!-- Teachings Section -->
+    <section class="islamic-pattern">
+        <h2>اہم تعليمات</h2>
+        <div class="teachings-grid">
+            <div class="teaching-card">
+                <h4>نماز کی اہمیت</h4>
+                <p>نماز اسلام کا دوسرا ستون ہے۔ یہ ہمیں اللہ کے قریب لاتی ہے اور روح کو پاک کرتی ہے۔ روزانہ پانچ نمازیں ہمارے ایمان کو مضبوط کرتی ہیں۔</p>
+            </div>
+            <div class="teaching-card">
+                <h4>قرآن کی قدر</h4>
+                <p>قرآن مجید اللہ کا کلام ہے۔ اس میں زندگی کی تمام رہنمائیاں ہیں۔ قرآن کو سمجھنا اور اس پر عمل کرنا ہمارا فرض ہے۔</p>
+            </div>
+            <div class="teaching-card">
+                <h4>حسن سلوک</h4>
+                <p>دوسروں کے ساتھ اچھا سلوک اسلام کی خوبصورتی ہے۔ والدین کی خدمت، یتیموں سے شفقت اور ضرورت مندوں کی مدد کرنا ہماری ذمہ داری ہے۔</p>
+            </div>
+            <div class="teaching-card">
+                <h4>علم کی تلاش</h4>
+                <p>علم حاصل کرنا ہر مسلمان پر فرض ہے۔ نبی کریم صلی اللہ علیہ وسلم نے علم کی تعريف فرمائی۔ علم ہمیں صحیح راستہ دکھاتا ہے۔</p>
+            </div>
+            <div class="teaching-card">
+                <h4>رحم و کمال</h4>
+                <p>اسلام رحم اور شفقت کا دین ہے۔ حیوانوں کے ساتھ بھی اچھا سلوک فرض ہے۔ اللہ کے پاس وہ سب سے قریب ہے جو رحم دل ہو۔</p>
+            </div>
+            <div class="teaching-card">
+                <h4>صبر و شکر</h4>
+                <p>صبر سے کامیابی ملتی ہے۔ مشکلات میں صبر کرنا اور اللہ پر توکل کرنا ایمان کی علامت ہے۔ شکر دل کو شادمان رکھتا ہے۔</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="islamic-pattern">
+        <h2>شاگردوں کے تاثرات</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="testimonial-text">"اس پلیٹ فارم نے میری اسلامی علم میں بہت اضافہ کیا۔ قرآن اور حدیث کی تفسیر بہت سہل اور دل نشین ہے۔ سب کو ضرور یہاں سے سیکھنا چاہیے۔"</div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ف</div>
+                    <div class="author-info">
+                        <h4>فاطمہ احمد</h4>
+                        <p>طالبہ علم</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text">"میرے بچوں نے یہاں سے اسلامی تعليم حاصل کی ہے۔ بہترین اساتذہ اور آسان انداز میں سب سیکھایا جاتا ہے۔ بہترین کام کر رہے ہو۔"</div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">م</div>
+                    <div class="author-info">
+                        <h4>محمد علی</h4>
+                        <p>والد</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text">"اسلامی علم سیکھنے کا یہ بہترین ذریعہ ہے۔ ہر موضوع پر تفصیلی وضاحت ملتی ہے۔ مجھے اپنے ایمان میں بہت اضافہ ہوا ہے۔"</div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ع</div>
+                    <div class="author-info">
+                        <h4>عائشہ خان</h4>
+                        <p>طالبہ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Festival Wishes Section -->
+    <section id="festival-wishes" class="islamic-pattern">
+        <h2>تہوار کی تمنائیں</h2>
+        
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 2rem;">
+            <p style="font-size: 1.1rem; color: var(--color-primary); margin-bottom: 1.5rem;">اپنا نام درج کریں اور خصوصی تہوار کے پیغامات موصول کریں</p>
+            
+            <div style="display: flex; gap: 1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <input type="text" id="festivalName" placeholder="اپنا نام درج کریں" style="flex: 1; padding: 12px 15px; border: 2px solid var(--color-secondary); border-radius: 4px; font-size: 1rem; background: white; color: var(--color-primary); font-family: inherit;">
+                <button onclick="loadFestivalWishes()" class="btn btn-primary" style="min-width: 120px;">شروع کریں</button>
+            </div>
+        </div>
+
+        <div id="festival-content" style="display: none;">
+            <!-- Wishes Cards -->
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="teaching-card" style="background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%); border: 2px solid #c9a961; margin-bottom: 2rem;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 0.9rem; color: #c9a961; margin-bottom: 1rem; letter-spacing: 2px;">آپ کے لیے خصوصی پیغام</p>
+                        <p id="festivalGreeting" style="font-size: 1.3rem; color: white; margin-bottom: 1.5rem; line-height: 1.8; font-weight: 500;"></p>
+                    </div>
+                </div>
+
+                <div class="teaching-card" style="background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%); border: 2px solid #c9a961; margin-bottom: 2rem;">
+                    <p style="text-align: center; font-size: 1.1rem; color: white; line-height: 1.8;">
+                        یہ تہوار آپ کے لیے خوشیوں، برکتوں اور امن لے کر آئے۔<br>
+                        اللہ تعالیٰ آپ اور آپ کے خاندان کو ہمیشا خوش رکھے۔<br><br>
+                        <span style="color: #c9a961; font-weight: 500;">محبت اور دعاؤں کے ساتھ</span>
+                    </p>
+                </div>
+
+                <div class="teaching-card" style="background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%); border: 2px solid #c9a961; margin-bottom: 2rem;">
+                    <p style="text-align: center; font-size: 1rem; color: white; line-height: 1.8;">
+                        "جو شخص اپنے بھائی کے لیے وہی چاہے جو اپنے لیے چاہتا ہے تو وہ مومن ہے۔"<br>
+                        <span style="color: #c9a961; font-size: 0.9rem;">حدیث شریف</span>
+                    </p>
+                </div>
+
+                <!-- Countdown -->
+                <div style="text-align: center; padding: 2rem; background: white; border-radius: 4px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+                    <p style="font-size: 0.9rem; color: var(--color-primary); letter-spacing: 2px; margin-bottom: 1rem;">اگلا تہوار</p>
+                    <p id="festival-countdown" style="font-size: 1.5rem; color: var(--color-secondary); font-weight: bold; letter-spacing: 1px;"></p>
+                </div>
+
+                <!-- Sharing Buttons -->
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                    <button onclick="shareFestivalWishes('whatsapp')" style="flex: 1; padding: 12px; background: #25d366; color: white; border: none; border-radius: 4px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        واٹس ایپ پر شیئر کریں
+                    </button>
+                    <button onclick="shareFestivalWishes('facebook')" style="flex: 1; padding: 12px; background: #4267b2; color: white; border: none; border-radius: 4px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        فیس بک پر شیئر کریں
+                    </button>
+                    <button onclick="copyLink()" style="flex: 1; padding: 12px; background: var(--color-primary); color: white; border: none; border-radius: 4px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        لنک کاپی کریں
+                    </button>
+                </div>
+
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <button onclick="resetFestival()" style="padding: 10px 20px; background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                        نیا نام درج کریں
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta">
+        <div class="cta-section">
+            <h2>آج ہی شریک ہو جائیں</h2>
+            <p>اسلامی علم حاصل کریں اور اپنے ایمان کو مضبوط کریں۔ ہزاروں طلباء پہلے سے ہمارے ساتھ سیکھ رہے ہیں۔ آپ بھی شامل ہو جائیں۔</p>
+            <button class="btn btn-primary">رجسٹر کریں</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>نور الاسلام</h4>
+                <a href="#">ہمارے بارے میں</a>
+                <a href="#">ہماری تاریخ</a>
+                <a href="#">نقطہ نظر</a>
+                <a href="#">مشن</a>
+            </div>
+            <div class="footer-section">
+                <h4>علمی مواد</h4>
+                <a href="#">قرآن مجید</a>
+                <a href="#">احادیث شریف</a>
+                <a href="#">عقیدہ و شریعت</a>
+                <a href="#">تفاسیر</a>
+            </div>
+            <div class="footer-section">
+                <h4>رابطہ</h4>
+                <a href="#">ہمارے ساتھ رابطہ کریں</a>
+                <a href="#">سوالات</a>
+                <a href="#">معاونت</a>
+                <a href="#">رائے دیں</a>
+            </div>
+            <div class="footer-section">
+                <h4>قانونی</h4>
+                <a href="#">نجی ہونا</a>
+                <a href="#">شرائط و ضوابط</a>
+                <a href="#">کوکیز کی پالیسی</a>
+                <a href="#">استعمال کی شرائط</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>تمام حقوق محفوظ ہیں 2024 نور الاسلام | اسلام کی روشنی میں روشن کریں</p>
+        </div>
+    </footer>
+
+    <script>
+        // Daily Hadith System
+        const hadiths = [
+            {
+                title: "حدیث شریف",
+                text: "رسول اللہ صلی اللہ علیہ وسلم نے فرمایا: تم میں سے بہترین وہ ہے جو اپنے گھر والوں کے لیے بہترین ہے، اور میں اپنے اہل خانہ کے لیے بہترین ہوں۔",
+                source: "ترمذی شریف"
+            },
+            {
+                title: "حدیث شریف",
+                text: "حضرت ابوہریرہ سے روایت ہے کہ نبی صلی اللہ علیہ وسلم نے فرمایا: سب سے زیادہ کامل ایمان والا وہ ہے جو اخلاق میں بہترین ہو۔",
+                source: "ترمذی شریف"
+            },
+            {
+                title: "حدیث شریف",
+                text: "علم حاصل کرنے والے کی مثال ایسی ہے جیسے بارش جو دوبارہ زمین میں اگاتی ہے۔ کچھ خوب پلنے والی گھاس ہے اور کچھ زمین ہے جو پانی جمع کرتی ہے۔",
+                source: "بخاری شریف"
+            },
+            {
+                title: "حدیث شریف",
+                text: "جو شخص سبح و مغرب کی نماز جماعت کے ساتھ پڑھے تو وہ الله کی حفاظت میں رہتا ہے۔",
+                source: "مسلم شریف"
+            },
+            {
+                title: "حدیث شریف",
+                text: "رحم کرنے والوں پر رحمن رحم کرتا ہے۔ تم دنیا میں جو ہو ان پر رحم کرو تو آسمان میں جو ہے وہ تم پر رحم کرے گا۔",
+                source: "ترمذی شریف"
+            },
+            {
+                title: "حدیث شریف",
+                text: "اپنے والدین کے ساتھ اچھے سلوک میں جنت ہے اور ان کے ساتھ برا سلوک میں جہنم ہے۔",
+                source: "ابن ماجہ"
+            },
+            {
+                title: "حدیث شریف",
+                text: "سب سے بہتر عمل وہ ہے جو سب سے زیادہ مشکل ہو۔ اللہ کی خاطر ایک مسلمان کی خوشی بخش دینا سب سے بہتر عمل ہے۔",
+                source: "الخطیب"
+            },
+            {
+                title: "حدیث شریف",
+                text: "صبر دونوں جانب سے خیر ہے۔ جو شخص صبر سے کام لے وہ خسارے میں نہیں رہتا۔",
+                source: "احمد"
+            },
+            {
+                title: "حدیث شریف",
+                text: "نیکی و عمل صالح کے ذریعے جنت کی طرف بڑھو۔ ایک بھلے کام کو کبھی بھی چھوٹا نہ سمجھو۔",
+                source: "بخاری شریف"
+            },
+            {
+                title: "حدیث شریف",
+                text: "آپ کے میں سے بہترین وہ ہے جو قرآن سیکھے اور سکھائے۔",
+                source: "بخاری شریف"
+            },
+            {
+                title: "حدیث شریف",
+                text: "جو صحت اور فراغت میں شکر کرے اور بیماری اور مشغولیت میں صبر کرے وہ شاکر و صابر ہے۔",
+                source: "ترمذی شریف"
+            },
+            {
+                title: "حدیث شریف",
+                text: "تمہارا سب سے بڑا دشمن تمہارا نفس ہے جو تمہاری کمر میں ہے۔ اس لیے اسے قابو میں رکھو۔",
+                source: "طبرانی"
+            },
+            {
+                title: "حدیث شریف",
+                text: "دنیا میں سب سے پیارا عمل اللہ کو یہ ہے کہ بندہ اپنے رب سے ڈرے اور والدین سے نیکی کرے۔",
+                source: "البخاری"
+            },
+            {
+                title: "حدیث شریف",
+                text: "جو شخص کسی مومن کی غم دور کرے اللہ تعالیٰ اس کا غم قیامت کے دن دور فرمائے گا۔",
+                source: "مسلم شریف"
+            },
+            {
+                title: "حدیث شریف",
+                text: "سب سے بہتر دوست وہ ہے جو صحیح سلاح دے اور غلط کام سے روکے۔",
+                source: "احمد"
+            },
+            {
+                title: "حدیث شریف",
+                text: "اللہ کی خاطر کیا گیا کام تھوڑا ہو تو زیادہ ہے۔ اور دنیا کی خاطر کیا گیا عمل بہت ہو تو کم ہے۔",
+                source: "الحاکم"
+            },
+            {
+                title: "حدیث شریف",
+                text: "سب سے بہتر جھوٹ وہ ہے جو سب سے کم نقصان دے۔ اور سب سے بہتر سچ وہ ہے جو سب سے زیادہ فائدہ دے۔",
+                source: "ابو یعلی"
+            },
+            {
+                title: "حدیث شریف",
+                text: "ہر دن صبح کرتے وقت ہر بندے کے لیے دو فرشتے نازل ہوتے ہیں۔ ایک کہتا ہے اللہم نیکی دے اور دوسرا کہتا ہے اللہم برائی ہٹا۔",
+                source: "ترمذی"
+            },
+            {
+                title: "حدیث شریف",
+                text: "جو اپنے بھائی کے لیے وہی چاہے جو اپنے لیے چاہتا ہے تو وہ مومن ہے۔",
+                source: "نسائی"
+            },
+            {
+                title: "حدیث شریف",
+                text: "تم میں سے کوئی بھی اس وقت تک مومن نہیں ہو سکتا جب تک وہ اپنے نفس کی خواہش سے اپنے رب کی خواہش کو ترجیح نہ دے۔",
+                source: "النووی"
+            },
+            {
+                title: "حدیث شریف",
+                text: "علم سے بہتر کوئی وراثت نہیں۔ علماء انبیاء کے وارث ہیں۔",
+                source: "ترمذی شریف"
+            },
+            {
+                title: "حدیث شریف",
+                text: "خود کو اس انسان کی طرح دیکھو جو آخری دن اپنی عمر میں ہے۔ تب تم نیکی سے لو گے اور برائی سے رکو گے۔",
+                source: "ترمذی"
+            },
+            {
+                title: "حدیث شریف",
+                text: "اللہ کی نظر میں بہترین نماز وہ ہے جو سب سے زیادہ طول دار ہو۔ اور بہترین روزہ وہ ہے جو سب سے زیادہ ہو۔",
+                source: "مسلم"
+            },
+            {
+                title: "حدیث شریف",
+                text: "جو شخص پانچ نمازوں کی حفاظت کرے اللہ اس کے لیے اپنے دل میں محبت ڈال دے گا۔",
+                source: "الطبرانی"
+            },
+            {
+                title: "حدیث شریف",
+                text: "تمہارا کوئی عمل اللہ کے پاس بہترین نہیں سوائے نیک نیت کے۔ جو شخص نیک نیت سے عمل کرے وہ کامیاب ہے۔",
+                source: "ابن ماجہ"
+            },
+            {
+                title: "حدیث شریف",
+                text: "جو شخص دنیا میں اللہ کو یاد رکھے اللہ آخرت میں اس کو یاد رکھے گا۔",
+                source: "ترمذی"
+            },
+            {
+                title: "حدیث شریف",
+                text: "خوشبو اور نیکی میں فرق یہ ہے کہ خوشبو ایک کو پسند ہے اور نیکی سب کو۔",
+                source: "ابو نعیم"
+            },
+            {
+                title: "حدیث شریف",
+                text: "جو شخص راہ میں کسی کو روشنی دے وہ جنت میں رہے گا۔ جو رات میں پڑھے اور دن میں کام کرے وہ اللہ کا محبوب ہے۔",
+                source: "ابن ماجہ"
+            },
+            {
+                title: "حدیث شریف",
+                text: "اللہ تعالیٰ اس بندے کو دیکھ رہا ہے جو اپنے کاموں میں اخلاص سے کام کرے۔ نیت سے ہی اعمال ہوتے ہیں۔",
+                source: "بخاری و مسلم"
+            },
+            {
+                title: "حدیث شریف",
+                text: "جو شخص اپنے نفس کو قابو میں رکھے وہ ہزار دشمنوں کو قابو میں رکھنے سے بہتر ہے۔",
+                source: "الترمذی"
+            }
+        ];
+
+        // Get today's hadith based on date
+        function getTodayHadith() {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+            const hadithIndex = dayOfYear % hadiths.length;
+            return hadiths[hadithIndex];
+        }
+
+        // Display today's hadith on page load
+        window.addEventListener('load', function() {
+            const todayHadith = getTodayHadith();
+            document.getElementById('hadith-title').textContent = todayHadith.title;
+            document.getElementById('hadith-text').textContent = todayHadith.text;
+            document.getElementById('hadith-source').textContent = "منبع: " + todayHadith.source;
+            
+            // Add animation
+            const container = document.getElementById('hadith-container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                container.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+
+        // Smooth interactions
+        const buttons = document.querySelectorAll('button, .btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Navbar active state
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.style.opacity = '0.7');
+                this.style.opacity = '1';
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .teaching-card, .testimonial').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Festival Wishes Functionality
+        const festivalGreetings = [
+            "یہ تہوار آپ کے لیے خوشیوں سے بھرا ہو۔ اللہ آپ کو ہمیشہ کامیابی دے۔",
+            "محبت اور برکتوں کے ساتھ، آپ کو تہوار کی دل سے تمنائیں۔",
+            "اللہ تعالیٰ آپ کے تمام خواہشیں پوری کرے اور آپ کو خوشی دے۔",
+            "یہ خصوصی تہوار آپ کے لیے رحمت اور برکت لے آئے۔",
+            "آپ اور آپ کے خاندار کو تہوار کی بہت بہت تمنائیں۔",
+            "اللہ کی رحمت آپ پر ہمیشہ برسے اور آپ کو خوشحال رکھے۔"
+        ];
+
+        function loadFestivalWishes() {
+            const name = document.getElementById('festivalName').value.trim();
+            if (!name) {
+                alert('براہ کرم اپنا نام درج کریں');
+                return;
+            }
+            
+            const randomGreeting = festivalGreetings[Math.floor(Math.random() * festivalGreetings.length)];
+            document.getElementById('festivalGreeting').textContent = name + ' کے لیے،\n\n' + randomGreeting;
+            document.getElementById('festival-content').style.display = 'block';
+            
+            // Scroll to content
+            setTimeout(() => {
+                document.getElementById('festival-content').scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+            
+            startCountdown();
+            localStorage.setItem('festivalName', name);
+        }
+
+        function startCountdown() {
+            const next_id = new Date();
+            next_id.setFullYear(next_id.getFullYear() + 1);
+            
+            const countDownDate = next_id.getTime();
+            
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+                const days = Math.floor(distance / (1000*60*60*24));
+                const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+                const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+                const seconds = Math.floor((distance % (1000*60)) / 1000);
+                
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("festival-countdown").innerHTML = "اب تہوار ہے!";
+                } else {
+                    document.getElementById("festival-countdown").innerHTML = 
+                        days + " دن  " + hours + " گھنٹے  " + minutes + " منٹ  " + seconds + " سیکنڈ";
+                }
+            }, 1000);
+        }
+
+        function shareFestivalWishes(platform) {
+            const name = document.getElementById('festivalName').value;
+            const message = encodeURIComponent(`السلام علیکم! میں نے نور الاسلام سے اپنے لیے خصوصی تہوار کے پیغامات موصول کیے ہیں۔ آپ بھی یہاں سے اپنے لیے خصوصی دعائیں لے سکتے ہو: ${window.location.href}`);
+            
+            if (platform === 'whatsapp') {
+                window.open(`https://wa.me/?text=${message}`, '_blank');
+            } else if (platform === 'facebook') {
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`, '_blank');
+            }
+        }
+
+        function copyLink() {
+            const text = window.location.href;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('لنک کاپی ہو گیا! آپ اسے کہیں بھی شیئر کر سکتے ہو۔');
+            });
+        }
+
+        function resetFestival() {
+            document.getElementById('festivalName').value = '';
+            document.getElementById('festival-content').style.display = 'none';
+            document.getElementById('festivalName').focus();
+            localStorage.removeItem('festivalName');
+        }
+
+        // Load saved name on page load
+        window.addEventListener('load', function() {
+            const savedName = localStorage.getItem('festivalName');
+            if (savedName) {
+                document.getElementById('festivalName').value = savedName;
+                loadFestivalWishes();
+            }
+        });
+    </script>
+</body>
+</html>
